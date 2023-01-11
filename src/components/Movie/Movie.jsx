@@ -4,16 +4,38 @@ import { Link } from 'react-router-dom';
 
 import useStyles from './styles';
 
-const Movie = ({ movie, index }) => {
+const Movie = ({ movie, i }) => {
   const classes = useStyles();
-  console.log(movie, index);
+  console.log(movie, i);
 
-  // to show 1 movie is 12 by default
+  // to show 1 movie is 12 by default, 2 movie 6...
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
-      <Typography className={classes.title} variant="h5">
-        {movie.title}
-      </Typography>
+      {/* ANIMATION TO LOAD BY ONE  */}
+      <Grow in key={i} timeout={(i + 1) * 250}>
+        <Link className={classes.links} to={`/movie/${movie.id}`}>
+          {/* MOVIE IMAGE         */}
+          <img
+            alt={movie.title}
+            className={classes.image}
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                : 'https://www.fillmurray.com/200/300'
+            }
+          />
+          {/* MOVIE TITLE */}
+          <Typography className={classes.title} variant="h5">
+            {movie.title}
+          </Typography>
+          {/* MOVIE RATING / 2 to show only up to 5 stars */}
+          <Tooltip disableTouchListener title={`${movie.vote_average} / 10`}>
+            <div>
+              <Rating readOnly value={movie.vote_average / 2} precision="0.1" />
+            </div>
+          </Tooltip>
+        </Link>
+      </Grow>
     </Grid>
   );
 };

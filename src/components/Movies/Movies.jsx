@@ -34,6 +34,7 @@ const Movies = () => {
 
   return (
     <div>
+      {/* fetching the movie data using redux query and passing by props to MovieList component */}
       <MovieList movies={data} />
     </div>
   );
