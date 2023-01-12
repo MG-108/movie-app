@@ -6,15 +6,15 @@ import useStyles from './styles';
 
 const Movie = ({ movie, i }) => {
   const classes = useStyles();
-  console.log(movie, i);
+  // console.log(movie, i);
 
   // to show 1 movie is 12 by default, 2 movie 6...
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
-      {/* ANIMATION TO LOAD BY ONE  */}
+      {/* ANIMATION TO LOAD BY ONE (grow component) */}
       <Grow in key={i} timeout={(i + 1) * 250}>
         <Link className={classes.links} to={`/movie/${movie.id}`}>
-          {/* MOVIE IMAGE         */}
+          {/* MOVIE IMAGE */}
           <img
             alt={movie.title}
             className={classes.image}

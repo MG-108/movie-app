@@ -24,6 +24,14 @@ export default makeStyles((theme) => ({
     marginBottom: '10px',
     '&:hover': {
       transform: 'scale(1.05)',
+      transitions: {
+        duration: {
+          shorter: 200,
+          easing: {
+            easeInOut: 'cubic-bezier(0.4, 0, 0.2, 1)',
+          },
+        },
+      },
     },
   },
 
