@@ -22,7 +22,7 @@ import popular from './popular.png';
 import topRated from './top rated.png';
 import upcoming from './upcoming.png';
 
-// SIDEBAR:  esse arquivo facilita o trabalho no map de alinhar o icone correto de cada categoria que esta vindo da API
+// SIDEBAR: esse arquivo facilita o trabalho no map de alinhar o icone correto de cada categoria que esta vindo da API
 
 export default {
   action,

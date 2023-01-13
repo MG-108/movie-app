@@ -8,7 +8,7 @@ const Movie = ({ movie, i }) => {
   const classes = useStyles();
   // console.log(movie, i);
 
-  // to show 1 movie is 12 by default, 2 movie 6...
+  // Grid:  to show 1 movie is 12 by default, 2 movie 6...
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
       {/* ANIMATION TO LOAD BY ONE (grow component) */}
@@ -31,7 +31,7 @@ const Movie = ({ movie, i }) => {
           {/* MOVIE RATING / 2 to show only up to 5 stars */}
           <Tooltip disableTouchListener title={`${movie.vote_average} / 10`}>
             <div>
-              <Rating readOnly value={movie.vote_average / 2} precision="0.1" />
+              <Rating readOnly value={movie.vote_average / 2} precision={0.1} />
             </div>
           </Tooltip>
         </Link>

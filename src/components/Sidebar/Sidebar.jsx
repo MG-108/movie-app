@@ -7,10 +7,14 @@ import {
   ListItemText,
   ListSubheader,
   ListItemIcon,
+  ListItemButton,
   Box,
   CircularProgress,
-  useTheme,
 } from '@mui/material';
+import { useTheme } from '@mui/styles';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import { useGetGenresQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
@@ -27,9 +31,9 @@ const Sidebar = ({ setMobileOpen }) => {
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
+  const dispatch = useDispatch();
 
   console.log(data);
-
   return (
     <>
       {/* Logo */}
@@ -46,7 +50,7 @@ const Sidebar = ({ setMobileOpen }) => {
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
-            <ListItem onClick={() => {}} button>
+            <ListItemButton onClick={() => dispatch(selectGenreOrCategory(value))}>
               {/* icons */}
               <ListItemIcon>
                 <img
@@ -56,7 +60,7 @@ const Sidebar = ({ setMobileOpen }) => {
                 />
               </ListItemIcon>
               <ListItemText primary={label} />
-            </ListItem>
+            </ListItemButton>
           </Link>
         ))}
       </List>
@@ -72,7 +76,7 @@ const Sidebar = ({ setMobileOpen }) => {
         ) : (
           data.genres.map(({ name, id }) => (
             <Link key={name} className={classes.links} to="/">
-              <ListItem onClick={() => {}} button>
+              <ListItemButton onClick={() => dispatch(selectGenreOrCategory(id))}>
                 {/* icons */}
                 <ListItemIcon>
                   <img
@@ -82,7 +86,7 @@ const Sidebar = ({ setMobileOpen }) => {
                   />
                 </ListItemIcon>
                 <ListItemText primary={name} />
-              </ListItem>
+              </ListItemButton>
             </Link>
           ))
         )}
