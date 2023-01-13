@@ -28,12 +28,12 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 const Sidebar = ({ setMobileOpen }) => {
+  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
 
-  console.log(data);
   return (
     <>
       {/* Logo */}
@@ -50,6 +50,7 @@ const Sidebar = ({ setMobileOpen }) => {
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
+            {/* User click on a category: using redux to fetch only the category selected */}
             <ListItemButton onClick={() => dispatch(selectGenreOrCategory(value))}>
               {/* icons */}
               <ListItemIcon>
@@ -59,6 +60,7 @@ const Sidebar = ({ setMobileOpen }) => {
                   height={30}
                 />
               </ListItemIcon>
+              {/* text */}
               <ListItemText primary={label} />
             </ListItemButton>
           </Link>
@@ -76,6 +78,7 @@ const Sidebar = ({ setMobileOpen }) => {
         ) : (
           data.genres.map(({ name, id }) => (
             <Link key={name} className={classes.links} to="/">
+              {/* User click on a category: using redux to fetch only the category selected */}
               <ListItemButton onClick={() => dispatch(selectGenreOrCategory(id))}>
                 {/* icons */}
                 <ListItemIcon>
@@ -85,6 +88,7 @@ const Sidebar = ({ setMobileOpen }) => {
                     height={30}
                   />
                 </ListItemIcon>
+                {/* text */}
                 <ListItemText primary={name} />
               </ListItemButton>
             </Link>
