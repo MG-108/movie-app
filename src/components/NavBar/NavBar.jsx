@@ -4,7 +4,7 @@ import { Menu, AccountCircle, Brightness4, Brightness7 } from '@mui/icons-materi
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
-import { Sidebar } from '..';
+import { Search, Sidebar } from '..';
 import useStyles from './styles';
 
 const NavBar = () => {
@@ -37,7 +37,7 @@ const NavBar = () => {
           </IconButton>
 
           {/* search on MD and LG devices */}
-          {!isMobile && 'Search ...'}
+          {!isMobile && <Search />}
 
           {/* lOGIN SECTION */}
           <div>
@@ -67,7 +67,7 @@ const NavBar = () => {
             )}
           </div>
           {/* search on mobile devices */}
-          {isMobile && 'Search ...'}
+          {isMobile && <Search />}
         </Toolbar>
       </AppBar>
 
