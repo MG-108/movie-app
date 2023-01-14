@@ -6,7 +6,6 @@ import useStyles from './styles';
 
 const Movie = ({ movie, i }) => {
   const classes = useStyles();
-  // console.log(movie, i);
 
   // Grid:  to show 1 movie is 12 by default, 2 movie 6...
   return (
