@@ -26,7 +26,7 @@ const Movies = () => {
     );
   }
 
-  // if dont have data
+  // if dont have data(movies)
   if (!data.results.length) {
     return (
       <Box display="flex" alignItems="center" mt="20px">
