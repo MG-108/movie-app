@@ -32,11 +32,14 @@ const NavBar = () => {
           const { data: userData } = await moviesApi.get(
             `/account?session_id=${sessionIdFromLocalStorage}`
           );
+
           dispatch(setUser(userData));
         } else {
-          // the first time is this part, we dont have the sessionId yet
+          // the first time is this part, we dont have the sessionIdFromLocalStorage yet
           const sessionId = await createSessionId();
+
           const { data: userData } = await moviesApi.get(`/account?session_id=${sessionId}`);
+
           dispatch(setUser(userData));
         }
       }
