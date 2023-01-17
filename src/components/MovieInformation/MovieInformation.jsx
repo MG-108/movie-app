@@ -26,6 +26,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import useStyles from './styles';
 
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+
 import { useGetMovieQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
 
@@ -33,6 +35,7 @@ const MovieInformation = () => {
   // to get the id from the url that is coming from movie.id in  Movie Component
   const { id } = useParams();
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const dispatch = useDispatch();
   const classes = useStyles();
   console.log(data);
 
@@ -99,7 +102,12 @@ const MovieInformation = () => {
         {/* GENRES IMAGE AND NAME LINKS */}
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
-            <Link key={genre.name} className={classes.links} to="/" onClick={() => {}}>
+            <Link
+              key={genre.name}
+              className={classes.links}
+              to="/"
+              onClick={() => dispatch(selectGenreOrCategory(genre.id))}
+            >
               <img
                 src={genreIcons[genre.name.toLowerCase()]}
                 className={classes.genreImage}

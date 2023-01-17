@@ -21,8 +21,8 @@ export const tmdbApi = createApi({
           return `/search/movie?query=${searchQuery}&page=${page}&api_key=${tmdbApiKey}`;
         }
 
+        //* Get movies by Category, static data === string
         if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'string') {
-          //* Get movies by Category, static data === string
           return `movie/${genreIdOrCategoryName}?page=${page}&api_key=${tmdbApiKey}`;
         }
 
