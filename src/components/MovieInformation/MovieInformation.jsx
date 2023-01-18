@@ -119,6 +119,50 @@ const MovieInformation = () => {
             </Link>
           ))}
         </Grid>
+        {/* OVERVIEW SECTION */}
+        <Typography variant="h5" gutterBottom style={{ marginTOp: '10px' }}>
+          Overview
+        </Typography>
+        <Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
+        {/* TOPCAST SECTION */}
+        <Typography variant="h5" gutterBottom>
+          Top Cast
+        </Typography>
+        {/* Cast --- to only show the characters that got img (character.profile_path &&+ */}
+        <Grid item container spacing={2}>
+          {data &&
+            data.credits?.cast
+              ?.map(
+                (character, i) =>
+                  character.profile_path && (
+                    <Grid
+                      key={i}
+                      item
+                      xs={4}
+                      md={2}
+                      component={Link}
+                      to={`/actors/${character.id}`}
+                      style={{ textDecoration: 'none' }}
+                    >
+                      {/* CAST IMAGE */}
+                      <img
+                        className={classes.castImage}
+                        src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
+                        alt={character.name}
+                      />
+                      {/* CAST NAME */}
+                      <Typography color="textPrimary"> {character?.name}</Typography>
+                      {/* MOVIE CHARACTER */}
+                      <Typography color="textSecondary">
+                        {' '}
+                        {character.character.split('/')[0]}
+                      </Typography>
+                    </Grid>
+                  )
+              )
+              .slice(0, 6)}
+          {/* JUST THE FIRST 6  */}
+        </Grid>
       </Grid>
     </Grid>
   );

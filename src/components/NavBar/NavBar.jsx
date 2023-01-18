@@ -50,7 +50,7 @@ const NavBar = () => {
     <>
       <AppBar position="fixed">
         <Toolbar className={classes.toolbar}>
-          {/* MOBILE DEVICES MENU BUTTON */}
+          {/* MOBILE DEVICES OPEN MENU BUTTON */}
           {isMobile && (
             <IconButton
               color="inherit"
