@@ -37,7 +37,14 @@ const MovieInformation = () => {
   const { data, isFetching, error } = useGetMovieQuery(id);
   const dispatch = useDispatch();
   const classes = useStyles();
+  const isMobile = useMediaQuery('(max-width:600px)'); // mediaquery from MUI
   console.log(data);
+
+  const isMovieFavorited = false;
+  const isMovieWatchListed = true;
+  const addTofavorites = () => {};
+
+  const addToWatchList = () => {};
 
   // LOADING
   if (isFetching) {
@@ -120,7 +127,7 @@ const MovieInformation = () => {
           ))}
         </Grid>
         {/* OVERVIEW SECTION */}
-        <Typography variant="h5" gutterBottom style={{ marginTOp: '10px' }}>
+        <Typography variant="h5" gutterBottom style={{ marginTop: '10px' }}>
           Overview
         </Typography>
         <Typography style={{ marginBottom: '2rem' }}>{data?.overview}</Typography>
@@ -154,7 +161,6 @@ const MovieInformation = () => {
                       <Typography color="textPrimary"> {character?.name}</Typography>
                       {/* MOVIE CHARACTER */}
                       <Typography color="textSecondary">
-                        {' '}
                         {character.character.split('/')[0]}
                       </Typography>
                     </Grid>
@@ -162,6 +168,69 @@ const MovieInformation = () => {
               )
               .slice(0, 6)}
           {/* JUST THE FIRST 6  */}
+        </Grid>
+
+        {/* BUTTONS SECTION */}
+        <Grid item container style={{ marginTop: '2rem' }}>
+          <div className={classes.buttonsContainer}>
+            <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
+              <ButtonGroup size={isMobile ? 'small' : 'medium'} variant="outlined">
+                {/* MOVIE WEBSITE PAGE */}
+                <Button
+                  target="_blank"
+                  rel="noopener_noreferrer"
+                  href={data?.homepage}
+                  endIcon={<Language />}
+                >
+                  Website
+                </Button>
+                {/* MOVIE IMDB PAGE */}
+                <Button
+                  target="_blank"
+                  rel="noopener_noreferrer"
+                  href={`https://www.imdb.com/title/${data?.imdb_id}`}
+                  endIcon={<MovieIcon />}
+                >
+                  IMDB
+                </Button>
+                {/* MOVIE TRAILER */}
+                <Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+                  Trailer
+                </Button>
+              </ButtonGroup>
+            </Grid>
+            {/* BUTTONS SECTION */}
+            <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
+              <ButtonGroup size={isMobile ? 'small' : 'medium'} variant="outlined">
+                {/* FAVORITE or unFAVORITE */}
+                <Button
+                  onClick={addTofavorites}
+                  endIcon={isMovieFavorited ? <FavoriteBorderOutlined /> : <Favorite />}
+                >
+                  {isMovieFavorited ? 'unFavorite' : 'Favorite'}
+                </Button>
+                {/* WATCHLIST */}
+                <Button
+                  onClick={addToWatchList}
+                  endIcon={isMovieWatchListed ? <Remove /> : <PlusOne />}
+                >
+                  Watchlist
+                </Button>
+                {/* BACK */}
+                <Button endIcon={<ArrowBack />} sx={{ borderColor: 'primary.main' }}>
+                  <Typography
+                    style={{ textDecoration: 'none' }}
+                    component={Link}
+                    to="/"
+                    color="inherit"
+                    variant="subtitle2"
+                  >
+                    Back
+                  </Typography>
+                </Button>
+              </ButtonGroup>
+            </Grid>
+          </div>
         </Grid>
       </Grid>
     </Grid>

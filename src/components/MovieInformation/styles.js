@@ -16,8 +16,8 @@ export default makeStyles((theme) => ({
     boxShadow: '0.5em 1em 1em rgb(64, 64, 70)',
     width: '80%',
     [theme.breakpoints.down('md')]: {
-      margin: '0 auto',
-      width: '50%',
+      margin: '0 5em',
+      width: '40%',
       height: '350px',
     },
     [theme.breakpoints.down('sm')]: {
@@ -39,6 +39,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    textDecoration: 'none',
     [theme.breakpoints.down('sm')]: {
       padding: '0.5rem 1rem',
     },
@@ -55,5 +56,13 @@ export default makeStyles((theme) => ({
     height: '8em',
     objectFit: 'cover',
     borderRadius: '10px',
+  },
+  buttonsContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100% ',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
 }));
