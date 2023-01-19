@@ -17,6 +17,10 @@ const Movies = () => {
     searchQuery,
   });
 
+  const lg = useMediaQuery((theme) => theme.breakpoints.only('lg'));
+
+  const numberOfMovies = lg ? 16 : 18;
+
   // para não ocorrer um erro precisa ter loading enquanto esta buscando os dados.
   if (isFetching) {
     return (
@@ -44,7 +48,8 @@ const Movies = () => {
   return (
     <div>
       {/* fetching the movie data using redux query and passing by props to MovieList component */}
-      <MovieList movies={data} />
+      <MovieList movies={data} numberOfMovies={numberOfMovies} />
+      {/* PAGINATION */}
       <Pagination currentPage={page} setPage={setPage} totalPages={data.total_pages} />
     </div>
   );

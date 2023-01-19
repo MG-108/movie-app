@@ -89,6 +89,7 @@ const Actors = () => {
           Movies
         </Typography>
         {actorMovies && <MovieList movies={actorMovies} numberOfMovies={12} />}
+        {/* PAGINATION */}
         <Pagination currentPage={page} setPage={setPage} totalPages={actorMovies?.total_pages} />
       </Box>
     </>
