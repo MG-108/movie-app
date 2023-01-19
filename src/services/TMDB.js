@@ -8,7 +8,7 @@ export const tmdbApi = createApi({
   reducerPath: 'tmdbApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://api.themoviedb.org/3' }),
   endpoints: (builder) => ({
-    //* Get Genres
+    //* Get Genres to use on sidebar
     getGenres: builder.query({
       query: () => `genre/movie/list?api_key=${tmdbApiKey}`,
     }),
@@ -39,7 +39,17 @@ export const tmdbApi = createApi({
     getMovie: builder.query({
       query: (id) => `/movie/${id}?append_to_response=videos,credits&api_key=${tmdbApiKey}`,
     }),
+
+    //* Get User Recommendations for Specific Movie
+    getRecommendations: builder.query({
+      query: ({ movie_id, list }) => `/movie/${movie_id}/${list}?api_key=${tmdbApiKey}`,
+    }),
   }),
 });
 
-export const { useGetGenresQuery, useGetMoviesQuery, useGetMovieQuery } = tmdbApi;
+export const {
+  useGetGenresQuery,
+  useGetMoviesQuery,
+  useGetMovieQuery,
+  useGetRecommendationsQuery,
+} = tmdbApi;

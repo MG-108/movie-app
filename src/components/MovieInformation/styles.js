@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
     boxShadow: '0.5em 1em 1em rgb(64, 64, 70)',
     width: '80%',
     [theme.breakpoints.down('md')]: {
-      margin: '0 5em',
+      margin: '0 auto',
       width: '40%',
       height: '350px',
     },
@@ -57,11 +57,12 @@ export default makeStyles((theme) => ({
     objectFit: 'cover',
     borderRadius: '10px',
   },
+
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'space-between',
     width: '100% ',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     },
   },

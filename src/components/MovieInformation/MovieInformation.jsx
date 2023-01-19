@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Modal,
   Typography,
@@ -27,9 +26,10 @@ import axios from 'axios';
 import useStyles from './styles';
 
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
-
-import { useGetMovieQuery } from '../../services/TMDB';
+import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/genres';
+
+import { MovieList } from '..';
 
 const MovieInformation = () => {
   // to get the id from the url that is coming from movie.id in  Movie Component
@@ -38,7 +38,13 @@ const MovieInformation = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)'); // mediaquery from MUI
-  console.log(data);
+
+  const { data: recommendations, isFetching: isRecommendationsFetching } =
+    useGetRecommendationsQuery({
+      list: '/recommendations',
+      movie_id: id,
+    });
+  console.log(recommendations);
 
   const isMovieFavorited = false;
   const isMovieWatchListed = true;
@@ -233,6 +239,18 @@ const MovieInformation = () => {
           </div>
         </Grid>
       </Grid>
+      {/* MOVIE RECOMENDATION SECTION */}
+      <Box marginTop="5rem" width="100%">
+        <Typography variant="h3" gutterBottom align="center">
+          You might also like
+        </Typography>
+        {/* reusing MovieList component, passing the new data */}
+        {recommendations ? (
+          <MovieList movies={recommendations} numberOfMovies={12} />
+        ) : (
+          <Box>Sorry nothing was found.</Box>
+        )}
+      </Box>
     </Grid>
   );
 };
