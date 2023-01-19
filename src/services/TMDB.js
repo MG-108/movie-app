@@ -10,7 +10,7 @@ export const tmdbApi = createApi({
   endpoints: (builder) => ({
     //* Get Genres to use on sidebar
     getGenres: builder.query({
-      query: () => `genre/movie/list?api_key=${tmdbApiKey}`,
+      query: () => `/genre/movie/list?api_key=${tmdbApiKey}`,
     }),
 
     //* Get Movies by [Type]
@@ -23,15 +23,15 @@ export const tmdbApi = createApi({
 
         //* Get movies by Category, static data === string
         if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'string') {
-          return `movie/${genreIdOrCategoryName}?page=${page}&api_key=${tmdbApiKey}`;
+          return `/movie/${genreIdOrCategoryName}?page=${page}&api_key=${tmdbApiKey}`;
         }
 
         //* Get movies by Genre, api data id === number
         if (genreIdOrCategoryName && typeof genreIdOrCategoryName === 'number') {
-          return `discover/movie?with_genres=${genreIdOrCategoryName}&page=${page}&api_key=${tmdbApiKey}`;
+          return `/discover/movie?with_genres=${genreIdOrCategoryName}&page=${page}&api_key=${tmdbApiKey}`;
         }
         //* Get popular movies
-        return `movie/popular?page=${page}&api_key=${tmdbApiKey}`;
+        return `/movie/popular?page=${page}&api_key=${tmdbApiKey}`;
       },
     }),
 
