@@ -79,6 +79,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
   },
 
+  // trailer
   video: {
     width: '50%',
     height: '50%',

@@ -47,8 +47,8 @@ const MovieInformation = () => {
     });
   console.log(data);
 
-  const isMovieFavorited = false;
-  const isMovieWatchListed = true;
+  const isMovieFavorited = true;
+  const isMovieWatchListed = false;
   const addTofavorites = () => {};
 
   const addToWatchList = () => {};
@@ -228,11 +228,14 @@ const MovieInformation = () => {
                   Watchlist
                 </Button>
                 {/* BACK */}
-                <Button endIcon={<ArrowBack />} sx={{ borderColor: 'primary.main' }}>
+                <Button
+                  component={Link}
+                  to="/"
+                  endIcon={<ArrowBack />}
+                  sx={{ borderColor: 'primary.main' }}
+                >
                   <Typography
                     style={{ textDecoration: 'none' }}
-                    component={Link}
-                    to="/"
                     color="inherit"
                     variant="subtitle2"
                   >
