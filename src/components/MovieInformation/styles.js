@@ -15,11 +15,15 @@ export default makeStyles((theme) => ({
     borderRadius: '20px',
     boxShadow: '0.5em 1em 1em rgb(64, 64, 70)',
     width: '80%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '0 auto',
-      width: '40%',
-      height: '350px',
+      width: '50%',
+      display: 'flex',
+      marginBottom: '30px',
+
+      // height: '350px',
     },
+
     [theme.breakpoints.down('sm')]: {
       margin: '0 auto',
       width: '100% ',

@@ -107,8 +107,7 @@ const MovieInformation = () => {
           </Box>
           {/* MOVIE LENGTH and MOVIE LANGUAGE */}
           <Typography variant="h6" align="center" gutterBottom>
-            {data?.runtime}min
-            {data?.spoken_languages.length > 0 ? `/ ${data?.spoken_languages[0].name}` : ''}
+            {data?.runtime}min | Language: {data?.spoken_languages[0].name}
           </Typography>
         </Grid>
 
