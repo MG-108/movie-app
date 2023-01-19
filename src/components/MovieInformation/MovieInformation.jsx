@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Modal,
   Typography,
@@ -38,13 +38,14 @@ const MovieInformation = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const isMobile = useMediaQuery('(max-width:600px)'); // mediaquery from MUI
+  const [open, setOpen] = useState(false);
 
   const { data: recommendations, isFetching: isRecommendationsFetching } =
     useGetRecommendationsQuery({
       list: '/recommendations',
       movie_id: id,
     });
-  console.log(recommendations);
+  console.log(data);
 
   const isMovieFavorited = false;
   const isMovieWatchListed = true;
@@ -180,7 +181,11 @@ const MovieInformation = () => {
         <Grid item container style={{ marginTop: '2rem' }}>
           <div className={classes.buttonsContainer}>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size={isMobile ? 'small' : 'medium'} variant="outlined">
+              <ButtonGroup
+                size={isMobile ? 'small' : 'medium'}
+                variant="outlined"
+                className={classes.buttonGroup}
+              >
                 {/* MOVIE WEBSITE PAGE */}
                 <Button
                   target="_blank"
@@ -200,7 +205,7 @@ const MovieInformation = () => {
                   IMDB
                 </Button>
                 {/* MOVIE TRAILER */}
-                <Button onClick={() => {}} href="#" endIcon={<Theaters />}>
+                <Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>
                   Trailer
                 </Button>
               </ButtonGroup>
@@ -251,6 +256,25 @@ const MovieInformation = () => {
           <Box>Sorry nothing was found.</Box>
         )}
       </Box>
+
+      {/* WHEN TRAILER BUTTON IS CLIKED */}
+      <Modal
+        closeAfterTransition
+        className={classes.modal}
+        open={open}
+        onClose={() => setOpen(false)}
+      >
+        {data?.videos?.results?.length > 0 && (
+          <iframe
+            autoPlay
+            className={classes.video}
+            frameBorder="0"
+            title="Trailer"
+            src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
+            allow="autoplay"
+          />
+        )}
+      </Modal>
     </Grid>
   );
 };

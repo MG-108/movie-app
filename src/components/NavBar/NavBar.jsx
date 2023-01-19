@@ -64,7 +64,7 @@ const NavBar = () => {
           )}
 
           {/* THEME BUTTON LIGHT OR DARK */}
-          <IconButton color="inherit" sx={{ ml: 1 }} onCLick={() => {}}>
+          <IconButton color="inherit" sx={{ ml: 1 }} onClick={() => {}}>
             {theme.palette.mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
           </IconButton>
 
