@@ -5,20 +5,19 @@ import { ArrowBack, HistoryToggleOff } from '@mui/icons-material';
 
 import useStyles from './styles';
 import { useGetActorsDetailsQuery, useGetMoviesByActorIdQuery } from '../../services/TMDB';
-import { MovieList } from '..';
+import { MovieList, Pagination } from '..';
 
 const Actors = () => {
   const { id } = useParams();
   const history = useHistory();
   const classes = useStyles();
-  const page = 1;
+  const [page, setPage] = useState(1);
 
   const { data, isFetching, error } = useGetActorsDetailsQuery(id);
-  const { data: actorMovies } = useGetMoviesByActorIdQuery({ id, page });
-  console.log(actorMovies);
+  const { data: actorMovies, isFetching: loading } = useGetMoviesByActorIdQuery({ id, page });
 
   // LOADING
-  if (isFetching) {
+  if (isFetching || loading) {
     return (
       <Box display="flex" justifyContent="center">
         <CircularProgress size="8rem" />
@@ -90,6 +89,7 @@ const Actors = () => {
           Movies
         </Typography>
         {actorMovies && <MovieList movies={actorMovies} numberOfMovies={12} />}
+        <Pagination currentPage={page} setPage={setPage} totalPages={actorMovies?.total_pages} />
       </Box>
     </>
   );

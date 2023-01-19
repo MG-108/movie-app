@@ -7,7 +7,7 @@ import useStyles from './styles';
 const Movie = ({ movie, i }) => {
   const classes = useStyles();
 
-  // Grid:  to show 1 movie is 12 by default, 2 movie 6...
+  // Grid:  para ocupar a tela toda 12, metade da tela 6, 1/3 da tela 4,...
   return (
     <Grid item xs={12} sm={6} md={4} lg={3} xl={2} className={classes.movie}>
       {/* ANIMATION TO LOAD BY ONE (grow component) */}

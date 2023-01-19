@@ -45,7 +45,6 @@ const MovieInformation = () => {
       list: '/recommendations',
       movie_id: id,
     });
-  console.log(data);
 
   const isMovieFavorited = true;
   const isMovieWatchListed = false;
@@ -54,7 +53,7 @@ const MovieInformation = () => {
   const addToWatchList = () => {};
 
   // LOADING
-  if (isFetching) {
+  if (isFetching || isRecommendationsFetching) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center">
         <CircularProgress size="8rem" />
