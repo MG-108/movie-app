@@ -88,8 +88,8 @@ export default makeStyles((theme) => ({
     width: '50%',
     height: '50%',
     [theme.breakpoints.down('sm')]: {
-      width: '90%',
-      height: '90%',
+      width: '80%',
+      height: '80%',
     },
   },
 }));

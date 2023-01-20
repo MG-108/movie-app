@@ -8,6 +8,7 @@ import { useGetActorsDetailsQuery, useGetMoviesByActorIdQuery } from '../../serv
 import { MovieList, Pagination } from '..';
 
 const Actors = () => {
+  // to get the id
   const { id } = useParams();
   const history = useHistory();
   const classes = useStyles();
@@ -16,8 +17,16 @@ const Actors = () => {
   const { data, isFetching, error } = useGetActorsDetailsQuery(id);
   const { data: actorMovies, isFetching: loading } = useGetMoviesByActorIdQuery({ id, page });
 
-  // LOADING
-  if (isFetching || loading) {
+  // LOADING for Actors detail
+  if (isFetching) {
+    return (
+      <Box display="flex" justifyContent="center">
+        <CircularProgress size="8rem" />
+      </Box>
+    );
+  }
+  // LOADING for Actors Movies
+  if (loading) {
     return (
       <Box display="flex" justifyContent="center">
         <CircularProgress size="8rem" />
@@ -25,7 +34,7 @@ const Actors = () => {
     );
   }
 
-  // error fetching
+  // error fetching Actors Detail
   if (error) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center">
