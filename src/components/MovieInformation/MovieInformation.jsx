@@ -42,6 +42,7 @@ const MovieInformation = () => {
 
   const [open, setOpen] = useState(false);
 
+  // data fetching
   const { data, isFetching, error } = useGetMovieQuery(id);
   const { data: recommendations, isFetching: isRecommendationsFetching } =
     useGetRecommendationsQuery({
@@ -71,7 +72,7 @@ const MovieInformation = () => {
     setIsMovieFavorited(!!favoriteMovies?.results?.find((movie) => movie?.id === data?.id));
   }, [favoriteMovies, data]);
 
-  // find if current movie is in watchlist or not
+  // find if current movie is in watchlisted or not
   useEffect(() => {
     setIsMovieWatchListed(!!watchlistMovies?.results?.find((movie) => movie?.id === data?.id));
   }, [watchlistMovies, data]);
