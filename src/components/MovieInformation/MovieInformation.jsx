@@ -245,6 +245,7 @@ const MovieInformation = () => {
                   rel="noopener_noreferrer"
                   href={data?.homepage}
                   endIcon={<Language />}
+                  disabled={!data.homepage}
                 >
                   Website
                 </Button>
