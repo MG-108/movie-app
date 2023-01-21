@@ -144,7 +144,7 @@ const MovieInformation = () => {
       <Grid item container direction="column" lg={7}>
         {/* MOVIE TITLE AND RELEASE YEAR */}
         <Typography variant="h3" align="center" gutterBottom>
-          {data?.title} ({data.release_date.split('-')[0]}){/* split to show only the year */}
+          {data?.title} ({data?.release_date.split('-')[0]}){/* split to show only the year */}
         </Typography>
         {/* MOVIE TAGLINE */}
         <Typography variant="h5" align="center" gutterBottom>

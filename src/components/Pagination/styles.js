@@ -1,10 +1,26 @@
 import { makeStyles } from '@mui/styles';
 
 export default makeStyles((theme) => ({
-  container: {
+  bigContainer: {
+    display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+  },
+  oneContainer: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      margin: '16px 0',
+    },
+  },
+  paginationContainer: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
 
   button: {

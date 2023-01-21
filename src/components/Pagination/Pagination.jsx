@@ -21,29 +21,51 @@ const Pagination = ({ currentPage, totalPages, setPage }) => {
     }
   };
 
+  const handlePageOne = () => {
+    if (typeof currentPage === 'number') {
+      setPage((prevPage) => 1);
+    }
+  };
+
   return (
-    <div className={classes.container}>
-      <Button
-        onClick={handlePrev}
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        type="button"
-      >
-        Prev
-      </Button>
-      <Typography variant="h4" className={classes.pageNumber}>
-        {currentPage}
-      </Typography>
-      <Button
-        onClick={handleNext}
-        className={classes.button}
-        variant="contained"
-        color="primary"
-        type="button"
-      >
-        Next
-      </Button>
+    <div className={classes.bigContainer}>
+      <div className={classes.oneContainer}>
+        <Button
+          onClick={handlePageOne}
+          variant="contained"
+          color="primary"
+          type="button"
+          disabled={currentPage === 1}
+          style={{ padding: '4px' }}
+        >
+          Page&nbsp;1
+        </Button>
+      </div>
+      <div className={classes.paginationContainer}>
+        <Button
+          onClick={handlePrev}
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          type="button"
+          disabled={currentPage === 1}
+        >
+          Prev
+        </Button>
+        <Typography variant="h4" className={classes.pageNumber}>
+          {currentPage}
+        </Typography>
+        <Button
+          onClick={handleNext}
+          className={classes.button}
+          variant="contained"
+          color="primary"
+          type="button"
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </Button>
+      </div>
     </div>
   );
 };
