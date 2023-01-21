@@ -166,7 +166,7 @@ const MovieInformation = () => {
           </Typography>
         </Grid>
 
-        {/* GENRES IMAGE AND NAME LINKS */}
+        {/* GENRES LINKS IMAGE AND NAME  */}
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
             <Link

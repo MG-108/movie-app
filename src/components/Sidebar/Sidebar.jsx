@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Divider,
@@ -34,6 +34,14 @@ const Sidebar = ({ setMobileOpen }) => {
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
 
+  // Selected category or genre
+  const [selectedName, setSelectedName] = useState('Popular');
+  // (category= label or name )    (id = value or id)
+  const handleListItemClick = (event, category, id) => {
+    setSelectedName(category);
+    dispatch(selectGenreOrCategory(id));
+  };
+
   return (
     <>
       {/* Logo */}
@@ -51,7 +59,10 @@ const Sidebar = ({ setMobileOpen }) => {
         {categories.map(({ label, value }) => (
           <Link key={value} className={classes.links} to="/">
             {/* User click on a category: using redux to fetch only the category selected */}
-            <ListItemButton onClick={() => dispatch(selectGenreOrCategory(value))}>
+            <ListItemButton
+              selected={selectedName === label}
+              onClick={(event) => handleListItemClick(event, label, value)}
+            >
               {/* icons */}
               <ListItemIcon>
                 <img
@@ -79,7 +90,10 @@ const Sidebar = ({ setMobileOpen }) => {
           data.genres.map(({ name, id }) => (
             <Link key={name} className={classes.links} to="/">
               {/* User click on a category: using redux to fetch only the category selected */}
-              <ListItemButton onClick={() => dispatch(selectGenreOrCategory(id))}>
+              <ListItemButton
+                selected={selectedName === name}
+                onClick={(event) => handleListItemClick(event, name, id)}
+              >
                 {/* icons */}
                 <ListItemIcon>
                   <img
@@ -98,5 +112,4 @@ const Sidebar = ({ setMobileOpen }) => {
     </>
   );
 };
-
 export default Sidebar;
