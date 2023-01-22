@@ -36,7 +36,6 @@ const Profile = () => {
     window.location.href = '/';
   };
 
-  console.log(favoriteMovies);
   return (
     <Box>
       <Box display="flex" justifyContent="space-between">

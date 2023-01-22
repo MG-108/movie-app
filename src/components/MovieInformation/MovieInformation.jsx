@@ -131,7 +131,6 @@ const MovieInformation = () => {
     return Number(String(number).slice(0, n));
   }
 
-  console.log(data);
   return (
     <Grid container className={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4}>
@@ -142,7 +141,6 @@ const MovieInformation = () => {
           alt={data?.title}
         />
       </Grid>
-
       <Grid item container direction="column" lg={7}>
         {/* MOVIE TITLE AND RELEASE YEAR */}
         <Typography variant="h3" align="center" gutterBottom>
@@ -164,7 +162,7 @@ const MovieInformation = () => {
           </Box>
           {/* MOVIE LENGTH and MOVIE LANGUAGE */}
           <Typography variant="h6" align="center" gutterBottom>
-            {data?.runtime}min | Language: {data?.spoken_languages[0].name}
+            {data?.runtime}min | Language: {data?.spoken_languages[0]?.name}
           </Typography>
         </Grid>
 
@@ -172,7 +170,7 @@ const MovieInformation = () => {
         <Grid item className={classes.genresContainer}>
           {data?.genres?.map((genre) => (
             <Link
-              key={genre.name}
+              key={genre?.name}
               className={classes.links}
               to="/"
               onClick={() => dispatch(selectGenreOrCategory(genre.id))}
@@ -217,7 +215,7 @@ const MovieInformation = () => {
                       <img
                         className={classes.castImage}
                         src={`https://image.tmdb.org/t/p/w500/${character.profile_path}`}
-                        alt={character.name}
+                        alt={character?.name}
                       />
                       {/* CAST NAME */}
                       <Typography color="textPrimary"> {character?.name}</Typography>
@@ -261,7 +259,12 @@ const MovieInformation = () => {
                   IMDB
                 </Button>
                 {/* MOVIE TRAILER */}
-                <Button onClick={() => setOpen(true)} href="#" endIcon={<Theaters />}>
+                <Button
+                  onClick={() => setOpen(true)}
+                  href="#"
+                  endIcon={<Theaters />}
+                  disabled={!data?.videos?.results}
+                >
                   Trailer
                 </Button>
               </ButtonGroup>
@@ -315,25 +318,23 @@ const MovieInformation = () => {
           <Box>Sorry nothing was found.</Box>
         )}
       </Box>
-
       {/* WHEN TRAILER BUTTON IS CLIKED */}
-
       <Modal
         closeAfterTransition
         className={classes.modal}
         open={open}
         onClose={() => setOpen(false)}
       >
-        {data?.videos?.results?.length > 0 && (
+        {data?.videos?.results ? (
           <iframe
             autoPlay
             className={classes.video}
             frameBorder="0"
             title="Trailer"
-            src={`https://www.youtube.com/embed/${data.videos.results[0].key}`}
+            src={`https://www.youtube.com/embed/${data?.videos?.results[0]?.key}`}
             allow="autoplay"
           />
-        )}
+        ) : null}
       </Modal>
     </Grid>
   );

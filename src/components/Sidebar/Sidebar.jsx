@@ -34,6 +34,10 @@ const Sidebar = ({ setMobileOpen }) => {
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [genreIdOrCategoryName]);
+
   // Selected category or genre
   const [selectedName, setSelectedName] = useState('Popular');
   // (category= label or name )    (id = value or id)
