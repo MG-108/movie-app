@@ -44,6 +44,7 @@ const MovieInformation = () => {
 
   // data fetching
   const { data, isFetching, error } = useGetMovieQuery(id);
+
   const { data: recommendations, isFetching: isRecommendationsFetching } =
     useGetRecommendationsQuery({
       list: '/recommendations',
@@ -130,6 +131,7 @@ const MovieInformation = () => {
     return Number(String(number).slice(0, n));
   }
 
+  console.log(data);
   return (
     <Grid container className={classes.containerSpaceAround}>
       <Grid item sm={12} lg={4}>

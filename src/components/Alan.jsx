@@ -1,10 +1,14 @@
-import React, { useEffect, useContext } from 'react';
+import { useEffect, useContext } from 'react';
 import alanBtn from '@alan-ai/alan-sdk-web';
+
+import { useHistory } from 'react-router-dom';
+
 import { ColorModeContext } from '../utils/ToggleColorMode';
 import { fetchToken } from '../utils';
 
 const useAlan = () => {
   const { setMode } = useContext(ColorModeContext);
+  const history = useHistory();
 
   useEffect(() => {
     alanBtn({
@@ -21,7 +25,7 @@ const useAlan = () => {
         } else if (command === 'logout') {
           localStorage.clear();
 
-          window.location.href = '/';
+          history.push('/');
         }
       },
     });
