@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   Divider,
   List,
-  ListItem,
   ListItemText,
   ListSubheader,
   ListItemIcon,
@@ -19,8 +18,8 @@ import { useGetGenresQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
 
-const blueLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
-const redLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
+import blueLogo from '../../assets/images/blueLogo.png';
+import redLogo from '../../assets/images/redLogo.png';
 
 const categories = [
   { label: 'Popular', value: 'popular' },

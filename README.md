@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+<h1>Filmpire</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>Project Description</h2>
 
-## Available Scripts
+<p>Filmpire is a movie app built using React and Material-UI. It utilizes the <a href="https://www.themoviedb.org/">MovieDB API</a> to display information about movies. The app is fully responsive and allows users to switch between dark and light mode.</p>
 
-In the project directory, you can run:
+<h2>Application Features</h2>
+<ul>
+  <li>Search for movies by name</li>
+  <li>Browse movies by categories or genres using the sidebar</li>
+  <li>Login and Logout clicking or using  voice commands say "login" or "logout"</li>
+   <li>Change between dark and light clicking or using voice commands say "make it dark", "dark", "make it light" or "light" </li>
+  <li>Access to a profile page with a list of favorited movies and watchlist after login</li>
+  <li>Movie information page with more details about a selected movie, including:
+    <ul>
+      <li>Overview</li>
+      <li>Top cast</li>
+      <li>Genres</li>
+      <li>"You might also like" section displaying related movie recommendations</li>
+      <li>Favorite button to add/remove movie to favorite list</li>
+      <li>Watchlist button to add/remove movie to watchlist</li>
+      <li>Button to watch the trailer on YouTube</li>
+      <li>Links to movie website and IMDb page if available</li>
+      <li>Back button to return to the home page</li>
+    </ul>
+  </li>
+  <li>Actors page accessible by clicking on actor's photo on the movie information page, displaying:
+    <ul>
+      <li>Actor's biography</li>
+      <li>List of movies the actor has participated in, with pagination</li>
+    </ul>
+  </li>
+  <li>Pagination on the homepage as well to navigate through the movies</li>
+</ul>
 
-### `npm start`
+<h2>Technologies used</h2>
+<ul>
+  <li><a href="https://reactjs.org/">React</a> - JavaScript library for building user interfaces</li>
+  <li><a href="https://material-ui.com/">Material-UI</a> - React components that implement Google's Material Design</li>
+  <li><a href="https://redux.js.org/">Redux</a> - Library for managing application state</li>
+  <li><a href="https://github.com/axios/axios">axios</a> - Promise based HTTP client for the browser and node.js</li>
+  <li><a href="https://reactrouter.com/web/guides/quick-start">react-router-dom</a> - Library for handling client-side routing in React</li>
+  <li><a href="https://www.npmjs.com/package/@alan-ai/alan-sdk-web">alan-ai/alan-sdk-web</a> - Library for voice recognition and voice commands</li>
+  <li><a href="https://www.themoviedb.org/">The MovieDB API</a> - Database of movies and TV shows</li>
+</ul>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<h2>Author</h2>
+<p>- Matheus Ghignatti- <a href="https://github.com/MG-108">Github Profile</a></p>

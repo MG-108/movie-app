@@ -27,7 +27,7 @@ const App = () => {
           </Route>
           <Route exact path={['/', '/approved']}>
             <Movies />
-          </Route>{' '}
+          </Route>
           <Route exact path="/profile/:id">
             <Profile />
           </Route>
