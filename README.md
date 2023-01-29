@@ -1,5 +1,7 @@
 <h1>Filmpire</h1>
 
+![Filmpire](https://user-images.githubusercontent.com/109861614/214127242-75ca06b4-f507-45ef-816f-b24eac90591a.png)
+
 <h2>Project Description</h2>
 <p>Filmpire is a movie app built using React and Material-UI. It utilizes the <a href="https://www.themoviedb.org/">MovieDB API</a> to display information about movies. The app is fully responsive and allows users to switch between dark and light mode.</p>
 
