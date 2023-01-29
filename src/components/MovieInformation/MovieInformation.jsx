@@ -7,8 +7,8 @@ import {
   Grid,
   Box,
   CircularProgress,
-  useMediaQuery,
   Rating,
+  useMediaQuery,
 } from '@mui/material';
 import {
   Movie as MovieIcon,
@@ -38,8 +38,9 @@ const MovieInformation = () => {
   const { user } = useSelector(userSelector);
   const dispatch = useDispatch();
   const classes = useStyles();
-  const isMobile = useMediaQuery('(max-width:600px)'); // mediaquery from MUI
+  const isMobileOrTablet = useMediaQuery('(max-width:900px)'); // mediaquery from MUI
 
+  const buttonSpacing = isMobileOrTablet ? { marginTop: '20px' } : null;
   const [open, setOpen] = useState(false);
 
   // data fetching
@@ -234,11 +235,7 @@ const MovieInformation = () => {
         <Grid item container style={{ marginTop: '2rem' }}>
           <div className={classes.buttonsContainer}>
             <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup
-                size={isMobile ? 'small' : 'medium'}
-                variant="outlined"
-                className={classes.buttonGroup}
-              >
+              <ButtonGroup size="small" variant="outlined">
                 {/* MOVIE WEBSITE PAGE */}
                 <Button
                   target="_blank"
@@ -270,8 +267,8 @@ const MovieInformation = () => {
               </ButtonGroup>
             </Grid>
             {/* BUTTONS SECTION */}
-            <Grid item xs={12} sm={6} className={classes.buttonsContainer}>
-              <ButtonGroup size={isMobile ? 'small' : 'medium'} variant="outlined">
+            <Grid item xs={12} sm={6} className={classes.buttonsContainer} style={buttonSpacing}>
+              <ButtonGroup size="small" variant="outlined">
                 {/* FAVORITE or unFAVORITE */}
                 <Button
                   onClick={addMovieTofavorites}

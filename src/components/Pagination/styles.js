@@ -3,6 +3,7 @@ import { makeStyles } from '@mui/styles';
 export default makeStyles((theme) => ({
   bigContainer: {
     display: 'flex',
+    marginTop: '20px',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
     },
